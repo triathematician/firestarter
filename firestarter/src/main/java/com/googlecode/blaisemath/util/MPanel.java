@@ -24,6 +24,7 @@ import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -39,7 +40,9 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JToggleButton;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 /**
@@ -68,7 +71,7 @@ public final class MPanel extends JPanel {
     /** Component within the panel */
     private Component component;
     /** Listen for changes to component size */
-    private final PropertyChangeListener componentSizeListener;
+    private final PropertyChangeListener componentListener;
 
     public MPanel() {
         this("Title", new JLabel("Component"));
@@ -130,10 +133,9 @@ public final class MPanel extends JPanel {
         setLayout(new BorderLayout());
         add(titleBar, BorderLayout.NORTH);
         
-        componentSizeListener = evt -> {
-            String prop = evt.getPropertyName();
-            if ("size".equals(prop) || "minimumSize".equals(prop)
-                    || "preferredSize".equals(prop) || "maximumSize".equals(prop)) {
+        componentListener = evt -> {
+            String name = evt.getPropertyName();
+            if (!"ancestor".equals(name)) {
                 updateSize();
             }
         };
@@ -176,6 +178,10 @@ public final class MPanel extends JPanel {
         setPreferredSize(new Dimension(component.getPreferredSize().width + 4, height));
         revalidate();
         repaint();
+        Container cont = SwingUtilities.getAncestorOfClass(JScrollPane.class, this);
+        if (cont != null) {
+            ((JScrollPane) cont).getViewport().getView().revalidate();
+        }
     }
     
     //<editor-fold defaultstate="collapsed" desc="PROPERTIES">
@@ -210,14 +216,14 @@ public final class MPanel extends JPanel {
      */
     public void setPrimaryComponent(Component c) {
         if (component != null) {
-            component.removePropertyChangeListener(componentSizeListener);
+            component.removePropertyChangeListener(componentListener);
             remove(component);
         }
         component = c;
         if (component instanceof JComponent) {
             ((JComponent) component).setBorder(null);
         }
-        component.addPropertyChangeListener(componentSizeListener);
+        component.addPropertyChangeListener(componentListener);
 
         add(component, BorderLayout.CENTER);
         updateSize();
