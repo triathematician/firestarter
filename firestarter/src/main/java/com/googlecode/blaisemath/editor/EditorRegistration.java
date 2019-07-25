@@ -20,7 +20,8 @@ package com.googlecode.blaisemath.editor;
  * #L%
  */
 
-import com.googlecode.blaisemath.util.ReflectionUtils;
+import com.googlecode.blaisemath.util.Reflection;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.beans.IndexedPropertyDescriptor;
@@ -152,12 +153,12 @@ public class EditorRegistration {
         PropertyEditor result = null;
         Class<?> cls = descriptor.getPropertyEditorClass();
         if (cls != null) {
-            result = (PropertyEditor) ReflectionUtils.tryInvokeNew(cls);
+            result = (PropertyEditor) Reflection.tryInvokeNew(cls);
         }
         
         // if no luck, set to editor registered for actual type
         if (result == null) {
-            Object sampleRead = ReflectionUtils.tryInvokeRead(bean, descriptor);
+            Object sampleRead = Reflection.tryInvokeRead(bean, descriptor);
             if (sampleRead != null) {
                 result = getRegisteredEditor(sampleRead.getClass());
             }
@@ -180,7 +181,7 @@ public class EditorRegistration {
     
     /** Updates the value of an editor. */
     static void updateEditorValue(Object bean, PropertyDescriptor descriptor, PropertyEditor editor) {
-        Object value = ReflectionUtils.tryInvokeRead(bean, descriptor);
+        Object value = Reflection.tryInvokeRead(bean, descriptor);
         editor.setValue(value);
     }
 
@@ -193,7 +194,7 @@ public class EditorRegistration {
                         ? ((MPropertyEditorSupport) source).getNewValue()
                         : source instanceof PropertyEditor ? ((PropertyEditor) source).getValue()
                         : source;
-                ReflectionUtils.tryInvokeWrite(bean, descriptor, newValue);
+                Reflection.tryInvokeWrite(bean, descriptor, newValue);
             });
         }
     }
@@ -220,7 +221,7 @@ public class EditorRegistration {
     
     /** Updates the value of an editor for an indexed property. */
     static void updateEditorValue(Object bean, IndexedPropertyDescriptor descriptor, int n, PropertyEditor editor) {
-        Object value = ReflectionUtils.tryInvokeIndexedRead(bean, descriptor, n);
+        Object value = Reflection.tryInvokeIndexedRead(bean, descriptor, n);
         editor.setValue(value);
     }
 
@@ -233,7 +234,7 @@ public class EditorRegistration {
                         ? ((MPropertyEditorSupport) source).getNewValue()
                         : source instanceof PropertyEditor ? ((PropertyEditor) source).getValue()
                         : source;
-                ReflectionUtils.tryInvokeIndexedWrite(bean, descriptor, n, newValue);
+                Reflection.tryInvokeIndexedWrite(bean, descriptor, n, newValue);
             });
         }
     }

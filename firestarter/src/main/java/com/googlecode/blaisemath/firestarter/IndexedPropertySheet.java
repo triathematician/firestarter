@@ -20,7 +20,8 @@ package com.googlecode.blaisemath.firestarter;
  * #L%
  */
 
-import com.googlecode.blaisemath.util.ReflectionUtils;
+import com.googlecode.blaisemath.util.Reflection;
+
 import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -36,7 +37,7 @@ import javax.swing.JPanel;
 
 /**
  * Table-formatted list of individual properties within an array, useful for editing 
- * indexed properties. Uses {@link BeanIndexedPropertyModel} for the underlying model.
+ * indexed properties. Uses {@link com.googlecode.blaisemath.firestarter.BeanIndexedPropertyModel} for the underlying model.
  *
  * @author Elisha Peterson
  */
@@ -53,7 +54,7 @@ public final class IndexedPropertySheet extends PropertySheet {
      */
     public static PropertySheet forIndexedProperty(Object bean, String propName) {
         requireNonNull(bean);
-        return forIndexedProperty(bean, ReflectionUtils.indexedPropertyDescriptor(bean.getClass(), propName));
+        return forIndexedProperty(bean, Reflection.indexedPropertyDescriptor(bean.getClass(), propName));
     }
 
     /**

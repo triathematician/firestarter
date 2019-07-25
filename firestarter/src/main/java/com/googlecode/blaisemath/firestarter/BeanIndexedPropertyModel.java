@@ -20,7 +20,8 @@ package com.googlecode.blaisemath.firestarter;
  * #L%
  */
 
-import com.googlecode.blaisemath.util.ReflectionUtils;
+import com.googlecode.blaisemath.util.Reflection;
+
 import java.beans.IndexedPropertyDescriptor;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -72,11 +73,11 @@ public final class BeanIndexedPropertyModel extends PropertyModelSupport {
 
     @Override
     public Object getPropertyValue(int pos) {
-        return ReflectionUtils.tryInvokeIndexedRead(parent, ipd, pos);
+        return Reflection.tryInvokeIndexedRead(parent, ipd, pos);
     }
     
     public Object[] getPropertyValueArray() {
-        return (Object[]) ReflectionUtils.tryInvokeRead(parent, ipd);
+        return (Object[]) Reflection.tryInvokeRead(parent, ipd);
     }
 
     @Override
@@ -86,7 +87,7 @@ public final class BeanIndexedPropertyModel extends PropertyModelSupport {
 
     @Override
     public void setPropertyValue(int pos, Object value) {
-        ReflectionUtils.tryInvokeIndexedWrite(parent, ipd, pos, value);
+        Reflection.tryInvokeIndexedWrite(parent, ipd, pos, value);
     }
     
     /** 
@@ -94,7 +95,7 @@ public final class BeanIndexedPropertyModel extends PropertyModelSupport {
      * @return newly created value, null if unable to create one
      */
     Object addNewValue() {
-        Object newObject = ReflectionUtils.tryInvokeNew(ipd.getIndexedPropertyType());
+        Object newObject = Reflection.tryInvokeNew(ipd.getIndexedPropertyType());
         if (newObject == null) {
             return null;
         }
@@ -105,7 +106,7 @@ public final class BeanIndexedPropertyModel extends PropertyModelSupport {
         }
         Object[] newArr = Arrays.copyOf(objs, objs.length+1);
         newArr[objs.length] = newObject;
-        if (ReflectionUtils.tryInvokeWrite(parent, ipd, newArr)) {
+        if (Reflection.tryInvokeWrite(parent, ipd, newArr)) {
             size = newArr.length;
             fireIntervalAdded(this, objs.length, objs.length);
             return newObject;
@@ -122,7 +123,7 @@ public final class BeanIndexedPropertyModel extends PropertyModelSupport {
         if (rows.length == 0) {
             return;
         }
-        Object[] objs = (Object[]) ReflectionUtils.tryInvokeRead(parent, ipd);
+        Object[] objs = (Object[]) Reflection.tryInvokeRead(parent, ipd);
         if (objs == null) {
             return;
         }
@@ -131,7 +132,7 @@ public final class BeanIndexedPropertyModel extends PropertyModelSupport {
             listObjs.remove(rows[i]);
         }
         Object[] newArr = listObjs.toArray((Object[])Array.newInstance(ipd.getIndexedPropertyType(), 0));
-        if (ReflectionUtils.tryInvokeWrite(parent, ipd, newArr)) {
+        if (Reflection.tryInvokeWrite(parent, ipd, newArr)) {
             size = newArr.length;
             fireContentsChanged(this, 0, newArr.length-1);
         }

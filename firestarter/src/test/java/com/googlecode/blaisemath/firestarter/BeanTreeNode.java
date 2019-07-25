@@ -21,7 +21,8 @@ package com.googlecode.blaisemath.firestarter;
  */
 
 import com.googlecode.blaisemath.editor.EditorRegistration;
-import com.googlecode.blaisemath.util.ReflectionUtils;
+import com.googlecode.blaisemath.util.Reflection;
+
 import java.beans.BeanInfo;
 import java.beans.IndexedPropertyDescriptor;
 import java.beans.PropertyDescriptor;
@@ -52,7 +53,7 @@ public final class BeanTreeNode extends DefaultMutableTreeNode {
         super(bean);
         if (bean != null) {
             this.bean = bean;
-            info = ReflectionUtils.getBeanInfo(bean.getClass());
+            info = Reflection.beanInfo(bean.getClass());
             System.out.println("adding node: " + bean);
             descriptors = info.getPropertyDescriptors();
             addSubNodes();

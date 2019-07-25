@@ -21,7 +21,8 @@ package com.googlecode.blaisemath.firestarter;
  */
 
 import com.googlecode.blaisemath.util.FilteredListModel;
-import com.googlecode.blaisemath.util.ReflectionUtils;
+import com.googlecode.blaisemath.util.Reflection;
+
 import java.beans.BeanInfo;
 import java.beans.IndexedPropertyDescriptor;
 import java.beans.PropertyDescriptor;
@@ -70,7 +71,7 @@ public final class BeanPropertyModel extends PropertyModelSupport {
             }
         });
         
-        BeanInfo info = ReflectionUtils.getBeanInfo(bean.getClass());
+        BeanInfo info = Reflection.beanInfo(bean.getClass());
         filteredProperties.setUnfilteredItems(Arrays.asList(info.getPropertyDescriptors()));
     }
     
@@ -124,14 +125,14 @@ public final class BeanPropertyModel extends PropertyModelSupport {
     @Override
     public Object getPropertyValue(int row) {
         PropertyDescriptor pd = getPropertyDescriptor(row);
-        return ReflectionUtils.tryInvokeRead(bean, pd);
+        return Reflection.tryInvokeRead(bean, pd);
     }
 
     @Override
     public void setPropertyValue(int row, Object value) {
         PropertyDescriptor pd = getPropertyDescriptor(row);
-        Object cur = ReflectionUtils.tryInvokeRead(bean, pd);
-        if (ReflectionUtils.tryInvokeWrite(bean, pd, value)) {
+        Object cur = Reflection.tryInvokeRead(bean, pd);
+        if (Reflection.tryInvokeWrite(bean, pd, value)) {
             pcs.firePropertyChange(getElementAt(row), cur, value);
         }
     }
