@@ -8,8 +8,7 @@
     
     <name>firestarter</name>
     <description>
-        Provides editors for various Java bean object types, and a generic, customizable
-        PropertySheet.
+        Provides editors for various Java bean object types, and a generic, customizable PropertySheet.
     </description>
     <url>https://github.com/triathematician/firestarter</url>
     <inceptionYear>2009</inceptionYear>

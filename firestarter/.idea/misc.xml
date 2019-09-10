@@ -5,6 +5,12 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/../../blaisemath/blaise-graphics-ui/pom.xml" />
+        <option value="$PROJECT_DIR$/../../blaisemath/blaise-common/pom.xml" />
+        <option value="$PROJECT_DIR$/../../blaisemath/blaise-graph-theory/pom.xml" />
+        <option value="$PROJECT_DIR$/../../blaisemath/blaise-graph-theory-ui/pom.xml" />
+        <option value="$PROJECT_DIR$/../../blaisemath/blaise-graphics/pom.xml" />
+        <option value="$PROJECT_DIR$/../../blaisemath/blaise-json/pom.xml" />
+        <option value="$PROJECT_DIR$/../../blaisemath/blaise-svg/pom.xml" />
       </list>
     </option>
   </component>

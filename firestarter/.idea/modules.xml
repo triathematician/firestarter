@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../blaisemath/blaise-common/blaise-common.iml" filepath="$PROJECT_DIR$/../../blaisemath/blaise-common/blaise-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../blaisemath/blaise-graph-theory/blaise-graph-theory.iml" filepath="$PROJECT_DIR$/../../blaisemath/blaise-graph-theory/blaise-graph-theory.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../blaisemath/blaise-graph-theory-ui/blaise-graph-theory-ui.iml" filepath="$PROJECT_DIR$/../../blaisemath/blaise-graph-theory-ui/blaise-graph-theory-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../blaisemath/blaise-graphics/blaise-graphics.iml" filepath="$PROJECT_DIR$/../../blaisemath/blaise-graphics/blaise-graphics.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../blaisemath/blaise-graphics-ui/blaise-graphics-ui.iml" filepath="$PROJECT_DIR$/../../blaisemath/blaise-graphics-ui/blaise-graphics-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../blaisemath/blaise-json/blaise-json.iml" filepath="$PROJECT_DIR$/../../blaisemath/blaise-json/blaise-json.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../blaisemath/blaise-svg/blaise-svg.iml" filepath="$PROJECT_DIR$/../../blaisemath/blaise-svg/blaise-svg.iml" />
       <module fileurl="file://$PROJECT_DIR$/firestarter.iml" filepath="$PROJECT_DIR$/firestarter.iml" />
     </modules>
   </component>

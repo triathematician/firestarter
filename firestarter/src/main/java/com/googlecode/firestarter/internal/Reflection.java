@@ -2,7 +2,7 @@ package com.googlecode.firestarter.internal;
 
 /*-
  * #%L
- * blaise-common
+ * firestarter
  * --
  * Copyright (C) 2009 - 2019 Elisha Peterson
  * --
