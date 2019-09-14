@@ -6,12 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="blaise-graphics-ui" />
+        <module name="blaise-json" />
         <module name="blaise-svg" />
         <module name="firestarter" />
         <module name="blaise-graph-theory" />
         <module name="blaise-common" />
-        <module name="blaise-json" />
+        <module name="blaise-graphics-ui" />
         <module name="blaise-graph-theory-ui" />
         <module name="blaise-graphics" />
       </profile>
@@ -22,9 +22,9 @@
       <module name="blaise-graph-theory-ui" target="11" />
       <module name="blaise-graphics" target="11" />
       <module name="blaise-graphics-ui" target="11" />
-      <module name="blaise-json" target="11" />
+      <module name="blaise-json" target="8" />
       <module name="blaise-svg" target="1.8" />
-      <module name="firestarter" target="11" />
+      <module name="firestarter" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

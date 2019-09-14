@@ -21,7 +21,7 @@ module com.googlecode.blaisemath.firestarter {
     requires java.desktop;
     requires java.logging;
 
-    exports com.googlecode.firestarter.editor;
-    exports com.googlecode.firestarter.property;
-    exports com.googlecode.firestarter.swing;
+    exports com.googlecode.blaisemath.firestarter.editor;
+    exports com.googlecode.blaisemath.firestarter.property;
+    exports com.googlecode.blaisemath.firestarter.swing;
 }
