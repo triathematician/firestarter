@@ -11,9 +11,9 @@
         <module name="firestarter" />
         <module name="blaise-graph-theory" />
         <module name="blaise-common" />
-        <module name="blaise-graphics-ui" />
-        <module name="blaise-graph-theory-ui" />
         <module name="blaise-graphics" />
+        <module name="blaise-graph-theory-ui" />
+        <module name="blaise-graphics-ui" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -24,7 +24,7 @@
       <module name="blaise-graphics-ui" target="11" />
       <module name="blaise-json" target="8" />
       <module name="blaise-svg" target="1.8" />
-      <module name="firestarter" target="8" />
+      <module name="firestarter" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
