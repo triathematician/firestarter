@@ -50,6 +50,8 @@ public class RollupPanel extends JPanel implements Scrollable {
         } else {
             super.addImpl(new MPanel(comp), constraints, index);
         }
+        revalidate();
+        repaint();
     }
 
     @Override
@@ -61,6 +63,25 @@ public class RollupPanel extends JPanel implements Scrollable {
                 super.remove(i);
             }
         }
+        revalidate();
+        repaint();
+    }
+
+    @Override
+    public void remove(int index) {
+        super.remove(index);
+        revalidate();
+        repaint();
+    }
+
+    @Override
+    public void removeAll() {
+        super.removeAll();
+        // Need to re-add the vertical spacer
+        VerticalLayout layout = (VerticalLayout) getLayout();
+        super.addImpl(layout.getVerticalSpacer(), null, -1);
+        revalidate();
+        repaint();
     }
 
     @Override
