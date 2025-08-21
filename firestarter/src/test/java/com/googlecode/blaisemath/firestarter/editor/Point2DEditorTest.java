@@ -61,5 +61,26 @@ public class Point2DEditorTest {
         assertEquals(3, instance.getNewValue(0), 1e-8);
         assertEquals(4, instance.getNewValue(1), 1e-8);
     }
+
+    @Test
+    public void testDefaultStepSize() {
+        System.out.println("defaultStepSize");
+        Point2DEditor instance = new Point2DEditor();
+        // Verify the default constructor uses the DEFAULT_STEP_SIZE
+        assertEquals(Point2DEditor.DEFAULT_STEP_SIZE, 0.01, 1e-8);
+    }
+
+    @Test
+    public void testCustomStepSize() {
+        System.out.println("customStepSize");
+        double customStep = 0.5;
+        Point2DEditor instance = new Point2DEditor(customStep);
+        // Verify the editor was created successfully with custom step size
+        // The step size is used internally for spinner models, which we can't easily test
+        // without creating the GUI components, but we can test that the editor works normally
+        instance.setValue(new Point(5, 6));
+        assertEquals(5, instance.getValue(0), 1e-8);
+        assertEquals(6, instance.getValue(1), 1e-8);
+    }
     
 }

@@ -36,8 +36,20 @@ public class Point2DEditor extends MultiSpinnerSupport<Double> {
     @SuppressWarnings("CanBeFinal")
     public static double DEFAULT_STEP_SIZE = 0.01;
 
+    private final double stepSize;
+
     public Point2DEditor() {
+        this(DEFAULT_STEP_SIZE);
+    }
+
+    /**
+     * Creates a Point2DEditor with a custom step size for the spinners.
+     * 
+     * @param stepSize the increment value for the spinner controls
+     */
+    public Point2DEditor(double stepSize) {
         super(new Point2D.Double(), "x", "y");
+        this.stepSize = stepSize;
     }
     
     @Override
@@ -55,8 +67,8 @@ public class Point2DEditor extends MultiSpinnerSupport<Double> {
 
     @Override
     protected void initSpinnerModels() {
-        spinners[0].setModel(new SpinnerNumberModel((Number) getNewValue(0), -Double.MAX_VALUE, Double.MAX_VALUE, DEFAULT_STEP_SIZE));
-        spinners[1].setModel(new SpinnerNumberModel((Number) getNewValue(1), -Double.MAX_VALUE, Double.MAX_VALUE, DEFAULT_STEP_SIZE));
+        spinners[0].setModel(new SpinnerNumberModel((Number) getNewValue(0), -Double.MAX_VALUE, Double.MAX_VALUE, stepSize));
+        spinners[1].setModel(new SpinnerNumberModel((Number) getNewValue(1), -Double.MAX_VALUE, Double.MAX_VALUE, stepSize));
     }
     
     @Override
